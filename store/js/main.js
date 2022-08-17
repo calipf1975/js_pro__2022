@@ -5,10 +5,10 @@ const goods = [
     { title: 'Shoes', price: 250 },
     ];
     const renderGoodsItem = (title, price) => {
-    return `<div class="goods-item"><h3>${title}</h3><p>${price}</p></div>`;
+    return `<div class="goodsList_item"><h3>${title}</h3><p>${price}</p></div>`;
     };
     const renderGoodsList = (list) => {
-        document.querySelector('div').innerHTML = list.map(item => renderGoodsItem(item.title, item.price)).join('');
+        document.querySelector('.goodsList').innerHTML = list.map(item => renderGoodsItem(item.title, item.price)).join('');
     }
     renderGoodsList(goods);
 

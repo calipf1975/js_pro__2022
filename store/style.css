@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 1260px;
+
+}
+
+
+.header {
+margin: 0 auto;
+display: flex
+}
+.header_top{
+height: 50px;
+background: rgb(56, 177, 78);
+}
+.header_footer{
+    height: 50px;
+    width: 100%;
+    background: rgb(155, 138, 138);
+    display: flex;
+    justify-content: end;
+}
+.header_button{
+    margin: top 20px;
+}
+
+.goodsList {
+width: 1260px;
+margin: 0 auto;
+background: white;
+ display: flex;   
+}
+.goodsList_item {
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    background: rgb(89, 79, 79);
+    
+   
+}
+.header_button{
+    height: 50%;
+}
