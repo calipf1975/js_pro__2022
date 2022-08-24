@@ -53,15 +53,24 @@ class GoodsList{
         constructor(){
             this.goodsCart=[];
         }
-        addGoodInCart(cartItem){
+        addGoodsCart(cartItem){
             this.cartItem;
             // метод добавления элементов в корзину
         }
-        render(){
-            // метод добавления разметки в HTML
+        eraseGoodsCart(){
+            // метод удаления элементов из корзины
         }
-        priceAddGoodInCart(){
-            // метод расчета стоимости товаров в корзине
+        toChangeGoodsCart(){
+            // метод изменения элементов в корзине
+        }
+        render(){
+            // метод вывода списка товаров
+        }
+        
+    }
+    class itemShoppingСart{
+        render(){
+            // метод который вернёт верстку товара
         }
     }
 
