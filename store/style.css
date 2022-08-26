@@ -25,6 +25,10 @@ background: rgb(158, 162, 158);
     background: rgb(122, 107, 107);
     
 }
+.cart{
+
+    background: rgb(142, 12, 12);
+}
 
 .goodsList {
 max-width: 1260px;

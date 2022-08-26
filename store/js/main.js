@@ -11,31 +11,36 @@
 //         document.querySelector('.goodsList').innerHTML = list.map(item => renderGoodsItem(item.title, item.price)).join('');
 //     }
 //     renderGoodsList(goods);
+const API = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
 class GoodsItem{
-    constructor(title, price){
-        this.title = title;
+    constructor(product_name, price){
+        this.product_name = product_name;
         this.price = price;
     }
     render(){
-        return `<div class="goodsList_item"><h3>${this.title}</h3><p>${this.price}</p></div>`;
+        return `<div class="goodsList_item"><h3>${this.product_name}</h3><p>${this.price}</p></div>`;
     }
 }
 class GoodsList{
     constructor(){
         this.goods=[];
+        this._fetchGoods()
+        .then(data =>{
+            this.goods=data;
+            this.render()
+        });
     }
-    fetchGoods(){
-        this.goods=[
-            { title: 'Shirt', price: 150 },
-            { title: 'Socks', price: 50 },
-            { title: 'Jacket', price: 350 },
-            { title: 'Shoes', price: 250 },   
-        ];
+    _fetchGoods(){
+         return fetch(`${API}/catalogData.json`)
+         .then(result=>result.json())
+         .catch(error => {
+            console.log(error);
+         });
     }
     render(){
         let listHtml='';
         this.goods.forEach(good => {
-            const goodItem = new GoodsItem(good.title, good.price);
+            const goodItem = new GoodsItem(good.product_name, good.price);
             listHtml+=goodItem.render();
         });
         document.querySelector('.goodsList').innerHTML=listHtml;
@@ -49,35 +54,62 @@ class GoodsList{
         }
         
     }
-    class ShoppingСart{
+    class ShoppingCart{
         constructor(){
             this.goodsCart=[];
+            this._fetchGoods()
+            .then(data =>{
+            this.goods=data;
+            this._render()
+        });
+
         }
-        addGoodsCart(cartItem){
-            this.cartItem;
-            // метод добавления элементов в корзину
+    
+        _render(){
+            let listHtml='';
+            this.goodsCart.forEach(good => {
+            const goodItem = new itemShoppingCart(good.product_name, good.price);
+            listHtml+=itemShoppingCart.render();
+            });
+            document.querySelector('.cart').innerHTML=listHtml;
         }
-        eraseGoodsCart(){
-            // метод удаления элементов из корзины
-        }
-        toChangeGoodsCart(){
-            // метод изменения элементов в корзине
-        }
-        render(){
-            // метод вывода списка товаров
-        }
+        _fetchGoods(){
+            return fetch(`${API}/getBasket.json`)
+            .then(result=>result.json())
+            .catch(error => {
+               console.log(error);
+            });
+       }
+        // addGoodsCart(cartItem){
+        //     this.cartItem;
+        //     // метод добавления элементов в корзину
+        // }
+        // eraseGoodsCart(){
+        //     // метод удаления элементов из корзины
+        // }
+        // toChangeGoodsCart(){
+        //     // метод изменения элементов в корзине
+        // }
         
     }
-    class itemShoppingСart{
+    class itemShoppingCart{
+        constructor(product_name, price){
+        this.product_name = product_name;
+        this.price = price;
+        }
         render(){
+            return `<div class="cart"><h3>${this.product_name}</h3><p>${this.price}</p></div>`;
             // метод который вернёт верстку товара
         }
     }
 
 
 const list = new GoodsList();
-list.fetchGoods();
+list._fetchGoods();
 list.render();
 console.log(list.priceGoodsSum());
+const bascet = new ShoppingCart();
+bascet._fetchGoods();
+bascet._render();
 
    
