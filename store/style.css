@@ -6,17 +6,17 @@
 max-width: 1260px;
 margin: 0 auto;
 }
-.header_top{
+.header_logo{
 height: 40px;
 background: rgb(158, 162, 158);
 }
-.header_footer{
+.header_basket{
     height: 40px;
     background: rgb(178, 167, 167);
     display: flex;
     justify-content: end;
 }
-.header_button{
+.basket_btn{
     margin-right: 20px;
     width: 200px;
     height: 70%;
@@ -25,9 +25,12 @@ background: rgb(158, 162, 158);
     background: rgb(122, 107, 107);
     
 }
-.cart{
+.basket_elem{
 
     background: rgb(142, 12, 12);
+}
+.disappear{
+    display: none;
 }
 
 .goodsList {

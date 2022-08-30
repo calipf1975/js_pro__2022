@@ -55,61 +55,60 @@ class GoodsList{
         
     }
     class ShoppingCart{
-        constructor(){
+        constructor(container='basket_elem'){
+            this.container = container;
             this.goodsCart=[];
-            this._fetchGoods()
-            .then(data =>{
-            this.goods=data;
-            this._render()
+            this._getItemCart();
+            this._clickCart()
+            .then(data => {
+            this.goodsCart=data.contents;
+            this.render();
         });
 
         }
     
-        _render(){
-            let listHtml='';
-            this.goodsCart.forEach(good => {
-            const goodItem = new itemShoppingCart(good.product_name, good.price);
-            listHtml+=itemShoppingCart.render();
-            });
-            document.querySelector('.cart').innerHTML=listHtml;
+        render(){
+            const block=document.querySelector(this.container);
+            for(let product of this.goodsCart){
+                const productObj=new itemShoppingCart;
+                block.insertAdjacentHTML('beforeend', productObj.render(product));
+            }
+          
         }
-        _fetchGoods(){
+        _getItemCart(){
             return fetch(`${API}/getBasket.json`)
             .then(result=>result.json())
             .catch(error => {
                console.log(error);
+            })
+       }
+       _clickCart(){
+            document.querySelector('.basket_btn').addEventListener('click', ()=>{
+                document.querySelector(this.container).classList.toggle('disappear');
             });
        }
-        // addGoodsCart(cartItem){
-        //     this.cartItem;
-        //     // метод добавления элементов в корзину
-        // }
-        // eraseGoodsCart(){
-        //     // метод удаления элементов из корзины
-        // }
-        // toChangeGoodsCart(){
-        //     // метод изменения элементов в корзине
-        // }
+  
         
     }
     class itemShoppingCart{
-        constructor(product_name, price){
-        this.product_name = product_name;
-        this.price = price;
+        render(product){
+            return`<div class="elem_add">
+                    <div class="elem_then">
+                    </div>
+                    </div>
+                                            `       
         }
-        render(){
-            return `<div class="cart"><h3>${this.product_name}</h3><p>${this.price}</p></div>`;
-            // метод который вернёт верстку товара
-        }
+        
     }
 
 
-const list = new GoodsList();
-list._fetchGoods();
-list.render();
-console.log(list.priceGoodsSum());
-const bascet = new ShoppingCart();
-bascet._fetchGoods();
-bascet._render();
+// const list = new GoodsList();
+// list._fetchGoods();
+// list.render();
+// console.log(list.priceGoodsSum());
+// const bascet = new ShoppingCart();
+// bascet._fetchGoods();
+// bascet._render();
+let obj = new ShoppingCart();
 
    
