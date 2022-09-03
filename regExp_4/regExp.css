@@ -1,0 +1,37 @@
+body {
+    font-family: Roboto-Regular, Sans-serif;
+}
+input, textarea {
+    margin-bottom: 5px;
+}
+
+fieldset {
+    width: 300px;
+}
+
+.error {
+    color: red;
+}
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+.goToBack {
+    text-decoration: none;
+    color: #000;
+    font-size: 40px;
+    line-height: 55px;
+}
+.wrapper-goToBack:hover {
+    background-color: #DCDCDC;
+}
+.wrapper-goToBack {
+    display: inline-block;
+    height: 55px;
+    width: 55px;
+    border-radius: 70px;
+    text-align: center;
+}
+.task {
+    font-size: 12px;
+}

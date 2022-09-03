@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 3</title>
+    <style src="regExp.css"></style>
+</head>
+<body>
+    <span class="wrapper-goToBack"></span>
+    <form action="">
+        <fieldset>
+            <legend>Форма отправки сообщения</legend>
+            <p>Имя</p>
+            <input type="text" placeholder="Иван" id="myname"><span id="myname_error" class="error"></span><br>
+            <p>Номер телефона</p>
+            <input type="text" placeholder="+7(000)000-0000" id="tel" title="Укажите номер в формате: +7(000)000-0000"><span id="tel_error" class="error"></span><br>
+            <p>Электронная почта</p>
+            <input type="text" placeholder="ivanVasil'evich@mail.ru" id="email"><span id="email_error" class="error"></span><br>
+            <p>Сообщение</p>
+            <textarea id="message" cols="30" rows="10" placeholder="Сообщение"></textarea><span id="message_error" class="error"></span><br>
+            <input type="button" value="Отправить" onclick="check(myname.value, regName, myname.id), check(tel.value, regTel, tel.id), check(email.value, regEmail, email.id), check(message.value, regMessage, message.id)">
+        </fieldset>
+
+    </form>
+    <script src="regExp.js"></script>
+   
+</body>
+</html>
